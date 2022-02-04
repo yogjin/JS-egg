@@ -4,18 +4,18 @@ const row = document.querySelector('.row');
 const coordinates = document.querySelector('.coordinates');
 
 document.addEventListener('mousemove', (e) => {
-  const offsetX = e.clientX;
-  const offsetY = e.clientY;
+  const clientX = e.clientX;
+  const clientY = e.clientY;
   // 조준점
-  target.style.left = `${offsetX - 60}px`;
-  target.style.top = `${offsetY - 60}px`;
+  target.style.left = `${clientX - 60}px`;
+  target.style.top = `${clientY - 60}px`;
 
   // 선
-  col.style.left = `${offsetX}px`;
-  row.style.top = `${offsetY}px`;
+  col.style.left = `${clientX}px`;
+  row.style.top = `${clientY}px`;
 
   // 좌표
-  coordinates.innerHTML = `${offsetX}px, ${offsetY}px`;
-  coordinates.style.left = `${offsetX + 30}px`;
-  coordinates.style.top = `${offsetY + 30}px`;
+  coordinates.innerHTML = `${clientX}px, ${clientY}px`;
+  coordinates.style.left = `${clientX + 30}px`;
+  coordinates.style.top = `${clientY + 30}px`;
 });
