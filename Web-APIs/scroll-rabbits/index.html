@@ -35,6 +35,13 @@
     <img src="./img/rabbit.png" alt="rabbit" class="rabbit" />
     <img src="./img/carrot.png" alt="carrot" />
     <img src="./img/carrot.png" alt="carrot" />
-    <script></script>
+    <script>
+      const rabbitButton = document.querySelector('.find-button');
+      const rabbit = document.querySelector('.rabbit');
+      rabbitButton.addEventListener('click', () => {
+        // rabbit element로 이동, options: 부드럽게, 수직정렬(block): 중앙
+        rabbit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    </script>
   </body>
 </html>
