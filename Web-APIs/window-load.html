@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script src="load.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded');
+    });
+
+    window.addEventListener('load', () => {
+      console.log('load');
+    });
+
+    // 사용자가 페이지를 나가는 순간에
+    window.addEventListener('beforeunload', (e) => {
+      e.returnValue = '페이지에서 나가시겠습니까?';
+    });
+
+    // 모든 리소스가 없어지기 직전
+    window.addEventListener('unload', () => {
+      console.log('unload');
+    });
+  </script>
+</html>
