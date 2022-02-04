@@ -60,8 +60,9 @@
       } else if (this === to) {
         window.scrollTo({ top: 100, behavior: 'smooth' });
       } else if (this === into) {
-        const offsetTop = specialBox.offsetTop;
-        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        specialBox.scrollIntoView();
+        // const offsetTop = specialBox.offsetTop;
+        // window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       }
     }
     const buttons = document.querySelectorAll('.scroll');
