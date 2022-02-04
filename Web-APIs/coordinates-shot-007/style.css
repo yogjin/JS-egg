@@ -1,0 +1,8 @@
+body {
+  background-color: black;
+}
+.target {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
