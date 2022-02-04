@@ -56,7 +56,7 @@
       const into = document.querySelector('.Into');
       if (this === by) {
         const scrollY = window.scrollY;
-        window.scrollTo({ top: scrollY + 100, behavior: 'smooth' });
+        window.scrollBy({ top: 100, behavior: 'smooth' });
       } else if (this === to) {
         window.scrollTo({ top: 100, behavior: 'smooth' });
       } else if (this === into) {
