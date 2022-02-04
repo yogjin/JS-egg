@@ -25,9 +25,9 @@
   </head>
   <body>
     <div class="buttons">
-      <button>scroll by 100px</button>
-      <button>scroll to 100px</button>
-      <button>scroll into special</button>
+      <button class="scroll By">scroll by 100px</button>
+      <button class="scroll To">scroll to 100px</button>
+      <button class="scroll Into">scroll into special</button>
     </div>
     <div class="box"></div>
     <div class="box"></div>
@@ -49,5 +49,24 @@
     }
     const specialBox = document.querySelector('.special');
     specialBox.addEventListener('click', logCoordinates);
+
+    function handleButtons() {
+      const by = document.querySelector('.By');
+      const to = document.querySelector('.To');
+      const into = document.querySelector('.Into');
+      if (this === by) {
+        const scrollY = window.scrollY;
+        window.scrollTo({ top: scrollY + 100, behavior: 'smooth' });
+      } else if (this === to) {
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+      } else if (this === into) {
+        const offsetTop = specialBox.offsetTop;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    }
+    const buttons = document.querySelectorAll('.scroll');
+    buttons.forEach((button) =>
+      button.addEventListener('click', handleButtons)
+    );
   </script>
 </html>
