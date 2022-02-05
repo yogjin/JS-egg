@@ -7,15 +7,13 @@ document.addEventListener('mousemove', (e) => {
   const x = e.clientX;
   const y = e.clientY;
   // 조준점
-  target.style.left = `${x - 60}px`;
-  target.style.top = `${y - 60}px`;
+  target.style.transform = `translate(${x}px, ${y}px)`;
 
   // 선
-  col.style.left = `${x}px`;
-  row.style.top = `${y}px`;
+  col.style.transform = `translateX(${x}px)`;
+  row.style.transform = `translateY(${y}px)`;
 
   // 좌표
   coordinates.innerHTML = `${x}px, ${y}px`;
-  coordinates.style.left = `${x + 30}px`;
-  coordinates.style.top = `${y + 30}px`;
+  coordinates.transform = `translate(${x}, ${y})`;
 });
