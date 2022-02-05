@@ -1,0 +1,30 @@
+body {
+  background-color: black;
+  overflow: hidden;
+}
+.target {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.line {
+  position: absolute;
+  background-color: white;
+}
+.col {
+  width: 1px;
+  height: 100vh;
+  left: 50vw;
+}
+.row {
+  height: 1px;
+  width: 100vw;
+  top: 50vh;
+}
+.coordinates {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  top: 55vh;
+  left: 55vw;
+}
