@@ -1,6 +1,7 @@
 body {
   background-color: black;
   overflow: hidden;
+  margin: 0;
 }
 .target {
   position: absolute;
