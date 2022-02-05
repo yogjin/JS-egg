@@ -19,5 +19,5 @@ document.addEventListener('mousemove', (e) => {
 
   // 좌표
   coordinates.innerHTML = `${x}px, ${y}px`;
-  coordinates.transform = `translate(${x}, ${y})`;
+  coordinates.style.transform = `translate(${x}px, ${y}px)`;
 });
