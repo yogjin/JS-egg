@@ -25,6 +25,9 @@ function addItem() {
   li.append(removeBtn);
 
   list.append(li);
+
+  // input창 초기화
+  addInput.value = '';
 }
 addBtn.addEventListener('click', addItem);
 
