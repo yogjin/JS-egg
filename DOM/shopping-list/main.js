@@ -2,12 +2,28 @@
 const list = document.querySelector('.shopping-list');
 const addBtn = document.querySelector('.addBtn');
 const addInput = document.querySelector('.addInput');
+const removeBtns = document.querySelectorAll('.removeBtn');
 
 // list에 추가
 function addItem() {
   const value = addInput.value;
-  const li = `<li>${value}<button class="removeBtn">X</button></li>`;
-  list.insertAdjacentHTML('beforeend', li);
+
+  // 삭제버튼
+  const removeBtn = document.createElement('button');
+  removeBtn.setAttribute('class', 'removeBtn');
+  removeBtn.innerText = 'X';
+  removeBtn.addEventListener('click', removeItem);
+
+  // item list
+  const li = document.createElement('li');
+  li.innerText = value;
+  li.append(removeBtn);
+
+  list.append(li);
 }
 addBtn.addEventListener('click', addItem);
+
 // list에서 삭제
+function removeItem() {
+  this.parentNode.remove();
+}
