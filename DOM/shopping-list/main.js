@@ -28,6 +28,13 @@ function addItem() {
 }
 addBtn.addEventListener('click', addItem);
 
+// 엔터 눌러서 item 추가
+addInput.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    addItem();
+  }
+});
+
 // list에서 삭제
 function removeItem() {
   this.parentNode.remove();
