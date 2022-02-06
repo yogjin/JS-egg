@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 350px;
+  text-align: center;
+  margin: auto;
+  background-color: lightgray;
+}
+
+.title {
+  background-color: antiquewhite;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.shopping-list {
+  background-color: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding-left: 0%;
+  height: 400px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 20px;
+}
+
+footer {
+  background-color: antiquewhite;
+  border-radius: 0 0 10px 10px;
+}
+
+.addInput {
+  height: 32px;
+  width: 100%;
+}
