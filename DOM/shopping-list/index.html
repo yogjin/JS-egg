@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=], initial-scale=1.0" />
     <title>Shopping-list</title>
+    <script
+      src="https://kit.fontawesome.com/a36ee61a2f.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -12,13 +16,21 @@
     <header class="title">Shopping list</header>
     <main>
       <ul class="shopping-list">
-        <li>우유<button class="removeBtn">X</button></li>
-        <li>라면<button class="removeBtn">X</button></li>
+        <li>
+          우유<button class="removeBtn">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </li>
+        <li>
+          라면<button class="removeBtn">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </li>
       </ul>
     </main>
     <footer>
       <input type="text" class="addInput" />
-      <button class="addBtn">+</button>
+      <button class="addBtn"><i class="fas fa-plus"></i></button>
     </footer>
   </body>
 </html>
