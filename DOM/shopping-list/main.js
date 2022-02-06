@@ -8,6 +8,11 @@ const removeBtns = document.querySelectorAll('.removeBtn');
 function addItem() {
   const value = addInput.value;
 
+  // item 입력안했을 시
+  if (value == '') {
+    return false;
+  }
+
   // 삭제버튼
   const removeBtn = document.createElement('button');
   removeBtn.setAttribute('class', 'removeBtn');
