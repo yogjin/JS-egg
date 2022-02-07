@@ -16,7 +16,7 @@ function addItem() {
   // 삭제버튼
   const removeBtn = document.createElement('button');
   removeBtn.setAttribute('class', 'removeBtn');
-  removeBtn.innerText = 'X';
+  removeBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
   removeBtn.addEventListener('click', removeItem);
 
   // item list
