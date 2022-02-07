@@ -25,11 +25,26 @@ body {
   padding-left: 0%;
   height: 400px;
 }
-
+.removeBtn {
+  border: 0;
+  cursor: pointer;
+  transition: transform 1s;
+  background-color: transparent;
+}
+.removeBtn:hover {
+  transform: scale(1.2);
+}
 li {
   display: flex;
   justify-content: space-between;
   margin: 5px 20px;
+}
+
+.divider {
+  height: 1px;
+  width: 90%;
+  background-color: lightgray;
+  margin: 0 auto;
 }
 
 footer {
