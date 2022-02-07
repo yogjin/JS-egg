@@ -24,6 +24,7 @@ body {
   list-style: none;
   padding-left: 0%;
   height: 400px;
+  overflow-y: scroll;
 }
 .removeBtn {
   border: 0;
@@ -55,4 +56,23 @@ footer {
 .addInput {
   height: 32px;
   width: 100%;
+  border: none;
+  background-color: darkgray;
+  font-size: 20px;
+  padding: 10px;
+  outline: none;
+}
+
+.fa-plus {
+  font-size: 24px;
+  padding: 5px;
+}
+.addBtn {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 1s;
+}
+.addBtn:hover {
+  transform: scale(1.2);
 }
