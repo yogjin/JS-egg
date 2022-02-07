@@ -21,11 +21,12 @@ function addItem() {
 
   // item list
   const li = document.createElement('li');
+  li.setAttribute('class', 'items');
   li.innerText = value;
   li.append(removeBtn);
 
   list.append(li);
-  list.insertAdjacentHTML('beforeend', `<div class="divider"></div>`); // divider 추가
+  list.insertAdjacentHTML('beforeend', `<li class="divider"></li>`); // divider 추가
   // input창 초기화
   addInput.value = '';
 }
