@@ -25,7 +25,7 @@ function addItem() {
   li.append(removeBtn);
 
   list.append(li);
-
+  list.insertAdjacentHTML('beforeend', `<div class="divider"></div>`);
   // input창 초기화
   addInput.value = '';
 }
@@ -40,5 +40,6 @@ addInput.addEventListener('keydown', (e) => {
 
 // list에서 삭제
 function removeItem() {
+  this.parentNode.nextSibling.remove(); // divider 삭제
   this.parentNode.remove();
 }
