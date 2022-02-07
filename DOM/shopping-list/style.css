@@ -37,6 +37,7 @@ body {
 }
 .removeBtn:hover {
   transform: scale(1.2);
+  color: red;
 }
 .items {
   display: flex;
