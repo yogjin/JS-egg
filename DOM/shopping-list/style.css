@@ -7,13 +7,16 @@ body {
   text-align: center;
   margin: auto;
   background-color: lightgray;
+  -webkit-box-shadow: 5px 7px 7px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 5px 7px 7px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
 }
 
 .title {
   background-color: antiquewhite;
   font-size: 24px;
   padding: 10px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .shopping-list {
@@ -50,7 +53,7 @@ li {
 
 footer {
   background-color: antiquewhite;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 20px 20px;
 }
 
 .addInput {
