@@ -25,7 +25,7 @@ function addItem() {
   li.append(removeBtn);
 
   list.append(li);
-  list.insertAdjacentHTML('beforeend', `<div class="divider"></div>`);
+  list.insertAdjacentHTML('beforeend', `<div class="divider"></div>`); // divider 추가
   // input창 초기화
   addInput.value = '';
 }
