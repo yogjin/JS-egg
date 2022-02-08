@@ -3,6 +3,7 @@ const list = document.querySelector('.shopping-list');
 const addBtn = document.querySelector('.addBtn');
 const addInput = document.querySelector('.addInput');
 const removeBtns = document.querySelectorAll('.removeBtn');
+let id = 0;
 
 // list에 추가
 function addItem() {
@@ -12,23 +13,22 @@ function addItem() {
   if (value == '') {
     return false;
   }
-
-  // 삭제버튼
-  const removeBtn = document.createElement('button');
-  removeBtn.setAttribute('class', 'removeBtn');
-  removeBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-  removeBtn.addEventListener('click', removeItem);
-
-  // item list
-  const li = document.createElement('li');
-  li.setAttribute('class', 'items');
-  li.innerText = value;
-  li.append(removeBtn);
-
-  list.append(li);
-  list.insertAdjacentHTML('beforeend', `<li class="divider"></li>`); // divider 추가
-  // input창 초기화
+  const itemRow = document.createElement('li');
+  itemRow.setAttribute('class', 'item__row');
+  itemRow.setAttribute('data-id', id);
+  itemRow.innerHTML = `
+    <div class='item'>
+      <span class='item__name'>${value}</span>
+      <button class='item__removeBtn' data-remove-id='${id}'>
+        <i class="fas fa-trash-alt" data-remove-id='${id}'></i>
+      </button>
+    </div>
+    <div class='item__divider'></div>
+  `;
+  list.append(itemRow);
+  list.scrollTop = list.scrollHeight;
   addInput.value = '';
+  id++;
 }
 addBtn.addEventListener('click', addItem);
 
@@ -39,7 +39,14 @@ addInput.addEventListener('keydown', (e) => {
   }
 });
 
-// list에서 삭제
+// item을 list에서 삭제
+list.addEventListener('click', (e) => {
+  const id = e.target.dataset.removeId;
+  if (id) {
+    const toBeRemoved = document.querySelector(`.item__row[data-id='${id}']`);
+    toBeRemoved.remove();
+  }
+});
 function removeItem() {
   this.parentNode.nextSibling.remove(); // divider 삭제
   this.parentNode.remove();
