@@ -3,6 +3,7 @@ const list = document.querySelector('.shopping-list');
 const addBtn = document.querySelector('.addBtn');
 const addInput = document.querySelector('.addInput');
 const removeBtns = document.querySelectorAll('.removeBtn');
+let id = 0;
 
 // list에 추가
 function addItem() {
@@ -14,17 +15,19 @@ function addItem() {
   }
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'item__row');
+  itemRow.setAttribute('data-id', id);
   itemRow.innerHTML = `
     <div class='item'>
       <span class='item__name'>${value}</span>
       <button class='item__removeBtn'>
-        <i class="fas fa-trash-alt"></i>
+        <i class="fas fa-trash-alt" data-remove-id='${id}'></i>
       </button>
     </div>
     <div class='item__divider'></div>
   `;
   list.append(itemRow);
   addInput.value = '';
+  id++;
 }
 addBtn.addEventListener('click', addItem);
 
@@ -35,7 +38,14 @@ addInput.addEventListener('keydown', (e) => {
   }
 });
 
-// list에서 삭제
+// item을 list에서 삭제
+list.addEventListener('click', (e) => {
+  const id = e.target.dataset.removeId;
+  if (id) {
+    const toBeRemoved = document.querySelector(`.item__row[data-id='${id}']`);
+    toBeRemoved.remove();
+  }
+});
 function removeItem() {
   this.parentNode.nextSibling.remove(); // divider 삭제
   this.parentNode.remove();
