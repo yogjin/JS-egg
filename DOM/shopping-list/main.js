@@ -24,21 +24,6 @@ function addItem() {
     <div class='item__divider'></div>
   `;
   list.append(itemRow);
-  // // 삭제버튼
-  // const removeBtn = document.createElement('button');
-  // removeBtn.setAttribute('class', 'removeBtn');
-  // removeBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-  // removeBtn.addEventListener('click', removeItem);
-
-  // // item list
-  // const li = document.createElement('li');
-  // li.setAttribute('class', 'items');
-  // li.innerText = value;
-  // li.append(removeBtn);
-
-  // list.append(li);
-  // list.insertAdjacentHTML('beforeend', `<li class="divider"></li>`); // divider 추가
-  // input창 초기화
   addInput.value = '';
 }
 addBtn.addEventListener('click', addItem);
