@@ -27,23 +27,23 @@ body {
   height: 400px;
   overflow-y: scroll;
 }
-.removeBtn {
+.item__removeBtn {
   border: 0;
   cursor: pointer;
   transition: transform 1s;
   background-color: transparent;
 }
-.removeBtn:hover {
+.item__removeBtn:hover {
   transform: scale(1.2);
   color: red;
 }
-.items {
+.item {
   display: flex;
   justify-content: space-between;
   margin: 5px 20px;
 }
 
-.divider {
+.item__divider {
   height: 1px;
   width: 90%;
   background-color: lightgray;
