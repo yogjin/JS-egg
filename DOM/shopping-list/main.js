@@ -26,6 +26,7 @@ function addItem() {
     <div class='item__divider'></div>
   `;
   list.append(itemRow);
+  list.scrollTop = list.scrollHeight;
   addInput.value = '';
   id++;
 }
