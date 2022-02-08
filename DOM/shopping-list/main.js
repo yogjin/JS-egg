@@ -19,7 +19,7 @@ function addItem() {
   itemRow.innerHTML = `
     <div class='item'>
       <span class='item__name'>${value}</span>
-      <button class='item__removeBtn'>
+      <button class='item__removeBtn' data-remove-id='${id}'>
         <i class="fas fa-trash-alt" data-remove-id='${id}'></i>
       </button>
     </div>
