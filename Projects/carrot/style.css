@@ -2,3 +2,16 @@ body {
   background-image: url('./img/background.png');
   background-size: cover;
 }
+
+.play_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform;
+}
+.play_button:hover {
+  transform: scale(1.1);
+}
+.fa-play {
+  font-size: 60px;
+}
