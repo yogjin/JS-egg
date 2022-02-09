@@ -3,6 +3,14 @@ body {
   background-size: cover;
 }
 
+/* Container: 게임시작, 남은시간, 남은당근 */
+.info_container {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* 게임 시작 버튼 */
 .play_button {
   background-color: transparent;
   border: none;
@@ -14,4 +22,17 @@ body {
 }
 .fa-play {
   font-size: 60px;
+}
+
+/* 남은 시간 */
+.count_down {
+  font-size: 50px;
+}
+
+/* 남은 당근 */
+.remaining_carrot {
+  font-size: 40px;
+  border: 2px solid;
+  border-radius: 10px;
+  background-color: blanchedalmond;
 }
