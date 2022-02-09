@@ -3,7 +3,7 @@ const countDown = document.querySelector('.count_down');
 let countInterval;
 
 // 게임 시작하면 카운트 다운
-function startCountDown() {
+function handleCountDown() {
   const on = playButton.classList.contains('on');
   if (!on) {
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
@@ -29,4 +29,4 @@ function startCountDown() {
     playButton.classList.remove('on');
   }
 }
-playButton.addEventListener('click', startCountDown);
+playButton.addEventListener('click', handleCountDown);
