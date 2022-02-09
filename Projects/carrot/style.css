@@ -23,7 +23,9 @@ body {
 .fa-play {
   font-size: 60px;
 }
-
+.fa-square {
+  font-size: 60px;
+}
 /* 남은 시간 */
 .count_down {
   font-size: 50px;
