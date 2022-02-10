@@ -97,7 +97,7 @@ playGround.addEventListener('click', handleClicked);
 
 // 남은 당근 개수를 10개로 설정
 function setRemainingCarrotToTen() {
-  numOfCarrots = 99;
+  numOfCarrots = 10;
   remainingCarrot.innerText = numOfCarrots;
 }
 
