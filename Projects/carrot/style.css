@@ -1,4 +1,8 @@
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
   background-image: url('./img/background.png');
   background-size: cover;
 }
@@ -37,4 +41,16 @@ body {
   border: 2px solid;
   border-radius: 10px;
   background-color: blanchedalmond;
+}
+
+/* play-ground 게임 공간 */
+.play_ground_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.play_ground {
+  width: 100%;
+  height: 70%;
 }
