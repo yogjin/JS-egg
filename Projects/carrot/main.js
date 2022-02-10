@@ -38,7 +38,7 @@ function handleCountDown() {
   }
 }
 playButton.addEventListener('click', handleCountDown);
-playButton.addEventListener('click', setRemainingCarrotToTen);
+playButton.addEventListener('click', setRemainingCarrot(10));
 playButton.addEventListener('click', setCarrotAndBugs);
 
 // 벌레, 당근 추가
@@ -87,7 +87,6 @@ function handleClicked(e) {
   const id = carrotOrBug.dataset.id;
   if (id === 'carrot') {
     carrotOrBug.remove();
-    // remaining_carrot 감소
   } else if (id === 'bug') {
     carrotOrBug.remove();
     // 게임오버
@@ -96,8 +95,7 @@ function handleClicked(e) {
 playGround.addEventListener('click', handleClicked);
 
 // 남은 당근 개수를 10개로 설정
-function setRemainingCarrotToTen() {
-  numOfCarrots = 10;
+function setRemainingCarrot(numOfCarrots) {
   remainingCarrot.innerText = numOfCarrots;
 }
 
