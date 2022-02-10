@@ -42,12 +42,12 @@ playButton.addEventListener('click', setCarrotAndBugs);
 function addCarrotAndBugs() {
   const carrot = `
     <div class='item carrot'>
-      <img src='./img/carrot.png'>
+      <img src='./img/carrot.png' data-id='carrot'>
     </div>
   `;
   const bug = `
     <div class='item bug'>
-      <img src='./img/bug.png'>
+      <img src='./img/bug.png' data-id='bug'>
     </div>
   `;
   playGround.insertAdjacentHTML('afterbegin', carrot.repeat(10));
@@ -76,5 +76,20 @@ function getRandomPosition(carrotOrBug) {
   return { x, y };
 }
 
+// 당근과 벌레를 클릭했을 때 상호작용
+// 당근: .remaining_carrot값 감소
+// 벌레: 게임 오버
+function handleClicked(e) {
+  const carrotOrBug = e.target;
+  const id = carrotOrBug.dataset.id;
+  if (id === 'carrot') {
+    carrotOrBug.remove();
+    // remaining_carrot 감소
+  } else if (id === 'bug') {
+    carrotOrBug.remove();
+    // 게임오버
+  }
+}
+playGround.addEventListener('click', handleClicked);
 // 당근과 벌레를 playGround에 추가함
 addCarrotAndBugs();
