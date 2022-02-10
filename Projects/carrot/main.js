@@ -1,12 +1,14 @@
 const playButton = document.querySelector('.play_button');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
+const remainingCarrot = document.querySelector('.remaining_carrot');
 const groundWidth = playGround.getBoundingClientRect().width;
 const groundHeight = playGround.getBoundingClientRect().height;
 const groundX = playGround.getBoundingClientRect().x;
 const groundY = playGround.getBoundingClientRect().y;
 
 let countInterval;
+let numOfCarrots;
 
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
@@ -36,6 +38,7 @@ function handleCountDown() {
   }
 }
 playButton.addEventListener('click', handleCountDown);
+playButton.addEventListener('click', setRemainingCarrotToTen);
 playButton.addEventListener('click', setCarrotAndBugs);
 
 // 벌레, 당근 추가
@@ -91,5 +94,12 @@ function handleClicked(e) {
   }
 }
 playGround.addEventListener('click', handleClicked);
+
+// 남은 당근 개수를 10개로 설정
+function setRemainingCarrotToTen() {
+  numOfCarrots = 99;
+  remainingCarrot.innerText = numOfCarrots;
+}
+
 // 당근과 벌레를 playGround에 추가함
 addCarrotAndBugs();
