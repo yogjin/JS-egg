@@ -57,7 +57,7 @@ body {
 
 /* 당근, 벌레 */
 .item {
-  display: inline-block;
+  display: none;
   left: 100px;
   top: 0px;
   position: absolute;

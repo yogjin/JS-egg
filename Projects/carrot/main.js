@@ -36,6 +36,7 @@ function handleCountDown() {
   }
 }
 playButton.addEventListener('click', handleCountDown);
+playButton.addEventListener('click', setCarrotAndBugs);
 
 // 벌레, 당근 추가
 function addCarrotAndBugs() {
@@ -59,6 +60,7 @@ function addCarrotAndBugs() {
 function setCarrotAndBugs() {
   const carrotAndBugs = document.querySelectorAll('.item');
   carrotAndBugs.forEach((carrotOrBug) => {
+    carrotOrBug.style.display = 'inline-block';
     const { x, y } = getRandomPosition(carrotOrBug);
     carrotOrBug.style.left = `${x}px`;
     carrotOrBug.style.top = `${y}px`;
@@ -73,3 +75,6 @@ function getRandomPosition(carrotOrBug) {
   const y = groundY + (groundHeight - carrotOrBugHeight) * Math.random();
   return { x, y };
 }
+
+// 당근과 벌레를 playGround에 추가함
+addCarrotAndBugs();
