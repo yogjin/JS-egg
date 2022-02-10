@@ -86,6 +86,7 @@ function handleClicked(e) {
   const carrotOrBug = e.target;
   const id = carrotOrBug.dataset.id;
   if (id === 'carrot') {
+    setRemainingCarrot(--numOfCarrots);
     carrotOrBug.remove();
   } else if (id === 'bug') {
     carrotOrBug.remove();
