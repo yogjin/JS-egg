@@ -54,14 +54,16 @@ function addCarrotAndBugs() {
 }
 // 벌레, 당근을 랜덤위치 시킴
 // img가 load되고 나서 getRandomPosition안의 getBoundingClientRect() 실행가능함
-window.addEventListener('load', () => {
+/* 수정요망 */
+/* playButton을 눌렀을때, getBoundingClientRect() 제대로 작동하게 해야함. load말고 Promise같은걸로, 또는 다른 방법으로 */
+function setCarrotAndBugs() {
   const carrotAndBugs = document.querySelectorAll('.item');
   carrotAndBugs.forEach((carrotOrBug) => {
     const { x, y } = getRandomPosition(carrotOrBug);
     carrotOrBug.style.left = `${x}px`;
     carrotOrBug.style.top = `${y}px`;
   });
-});
+}
 
 // 벌레,당근을 playGround안 랜덤한 위치에 위치시키기 위함
 function getRandomPosition(carrotOrBug) {
