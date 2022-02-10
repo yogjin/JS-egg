@@ -64,3 +64,32 @@ body {
 }
 .carrot {
 }
+
+/* 게임 결과 창 */
+.result_container {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 100px;
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: aliceblue;
+  top: 50%;
+  left: 40%;
+}
+
+/* 게임 결과 창: 다시시작 버튼 */
+.button_redo {
+  background-color: transparent;
+  border: none;
+}
+.fa-redo {
+  font-size: 50px;
+}
+/* 게임 결과 창: 결과 메시지 */
+.result_message {
+  padding-top: 10px;
+  font-size: 30px;
+}

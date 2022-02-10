@@ -88,9 +88,12 @@ function handleClicked(e) {
   if (id === 'carrot') {
     setRemainingCarrot(--numOfCarrots);
     carrotOrBug.remove();
+    if (numOfCarrots === 0) {
+      showgameResult('당근을 무사히 구출했어요!');
+    }
   } else if (id === 'bug') {
     carrotOrBug.remove();
-    // 게임오버
+    showgameResult('게임 오버...');
   }
 }
 playGround.addEventListener('click', handleClicked);
@@ -99,4 +102,17 @@ playGround.addEventListener('click', handleClicked);
 function setRemainingCarrot(numOfCarrot) {
   numOfCarrots = numOfCarrot;
   remainingCarrot.innerText = numOfCarrots;
+}
+
+// 게임 결과 창
+function showgameResult(message) {
+  const resultContainer = `
+    <div class='result_container'>
+      <button class='button_redo'>
+        <i class="fas fa-redo"></i>
+      </button>
+      <span class='result_message'>${message}</span>
+    </div>`;
+  playGround.insertAdjacentHTML('beforeend', resultContainer);
+  document.querySelector('.result_container').style.display = 'flex';
 }
