@@ -39,6 +39,7 @@ function handleCountDown() {
 }
 playButton.addEventListener('click', handleCountDown);
 playButton.addEventListener('click', () => setRemainingCarrot(10));
+playButton.addEventListener('click', addCarrotAndBugs);
 playButton.addEventListener('click', setCarrotAndBugs);
 
 // 벌레, 당근 추가
@@ -53,8 +54,7 @@ function addCarrotAndBugs() {
       <img src='./img/bug.png' data-id='bug'>
     </div>
   `;
-  playGround.insertAdjacentHTML('afterbegin', carrot.repeat(10));
-  playGround.insertAdjacentHTML('afterbegin', bug.repeat(10));
+  playGround.innerHTML = `${carrot.repeat(10)}${bug.repeat(10)}`;
 }
 // 벌레, 당근을 랜덤위치 시킴
 // img가 load되고 나서 getRandomPosition안의 getBoundingClientRect() 실행가능함
@@ -100,6 +100,3 @@ function setRemainingCarrot(numOfCarrot) {
   numOfCarrots = numOfCarrot;
   remainingCarrot.innerText = numOfCarrots;
 }
-
-// 당근과 벌레를 playGround에 추가함
-addCarrotAndBugs();
