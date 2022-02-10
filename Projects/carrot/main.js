@@ -38,7 +38,7 @@ function handleCountDown() {
 playButton.addEventListener('click', handleCountDown);
 
 // 벌레, 당근 추가
-function setCarrotAndBugs() {
+function addCarrotAndBugs() {
   const carrot = `
     <div class='item carrot'>
       <img src='./img/carrot.png'>
