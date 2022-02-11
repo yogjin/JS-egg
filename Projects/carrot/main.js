@@ -138,6 +138,7 @@ function gameOver() {
   isPlaying = false;
   BGM.pause();
   clearInterval(countInterval);
+  new Audio('./sound/alert.wav').play();
   showgameResult('게임 오버...');
 }
 
