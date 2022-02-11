@@ -60,6 +60,9 @@ function addCarrotAndBugs() {
 /* 수정요망 */
 /* playButton을 눌렀을때, getBoundingClientRect() 제대로 작동하게 해야함. load말고 Promise같은걸로, 또는 다른 방법으로 */
 function setCarrotAndBugs() {
+  if (!isPlaying) {
+    return;
+  }
   const carrotAndBugs = document.querySelectorAll('.item');
   carrotAndBugs.forEach((carrotOrBug) => {
     carrotOrBug.style.display = 'inline-block';
