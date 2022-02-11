@@ -2,6 +2,7 @@ const playButton = document.querySelector('.play_button');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
+const 
 const groundWidth = playGround.getBoundingClientRect().width;
 const groundHeight = playGround.getBoundingClientRect().height;
 const groundX = playGround.getBoundingClientRect().x;
@@ -79,20 +80,21 @@ function getRandomPosition(carrotOrBug) {
   return { x, y };
 }
 
-// 당근과 벌레를 클릭했을 때 상호작용
+// play_ground를 클릭했을 때 상호작용
 // 당근: .remaining_carrot값 감소
 // 벌레: 게임 오버
+// button_redo: 게임 다시시작
 function handleClicked(e) {
-  const carrotOrBug = e.target;
-  const id = carrotOrBug.dataset.id;
+  const clicked = e.target;
+  const id = clicked.dataset.id;
   if (id === 'carrot') {
     setRemainingCarrot(--numOfCarrots);
-    carrotOrBug.remove();
+    clicked.remove();
     if (numOfCarrots === 0) {
       showgameResult('당근을 무사히 구출했어요!');
     }
   } else if (id === 'bug') {
-    carrotOrBug.remove();
+    clicked.remove();
     showgameResult('게임 오버...');
   }
 }
