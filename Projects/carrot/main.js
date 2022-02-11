@@ -40,10 +40,7 @@ function handleCountDown() {
     BGM.pause();
   }
 }
-playButton.addEventListener('click', handleCountDown);
-playButton.addEventListener('click', () => setRemainingCarrot(10));
-playButton.addEventListener('click', addCarrotAndBugs);
-playButton.addEventListener('click', setCarrotAndBugs);
+playButton.addEventListener('click', gameStart);
 
 // 벌레, 당근 추가
 function addCarrotAndBugs() {
@@ -104,10 +101,7 @@ function handleClicked(e) {
     clicked.remove();
     showgameResult('게임 오버...');
   } else if (id === 'redo') {
-    handleCountDown();
-    setRemainingCarrot(10);
-    addCarrotAndBugs();
-    setCarrotAndBugs();
+    gameStart();
   }
 }
 playGround.addEventListener('click', handleClicked);
@@ -129,4 +123,12 @@ function showgameResult(message) {
     </div>`;
   playGround.insertAdjacentHTML('beforeend', resultContainer);
   document.querySelector('.result_container').style.display = 'flex';
+}
+
+// 게임 시작
+function gameStart() {
+  handleCountDown();
+  setRemainingCarrot(10);
+  addCarrotAndBugs();
+  setCarrotAndBugs();
 }
