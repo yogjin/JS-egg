@@ -91,10 +91,7 @@ function handleClicked(e) {
       new Audio('./sound/carrot_pull.mp3').play();
       clicked.remove();
       if (numOfCarrots === 0) {
-        isPlaying = false;
-        showgameResult('당근을 무사히 구출했어요!');
-        BGM.pause();
-        new Audio('./sound/game_win.mp3').play();
+        gameClear();
       }
     } else if (id === 'bug') {
       new Audio('./sound/bug_pull.mp3').play();
@@ -140,4 +137,13 @@ function gameOver() {
   BGM.pause();
   clearInterval(countInterval);
   showgameResult('게임 오버...');
+}
+
+// 게임 클리어
+function gameClear() {
+  isPlaying = false;
+  BGM.pause();
+  clearInterval(countInterval);
+  new Audio('./sound/game_win.mp3').play();
+  showgameResult('당근을 무사히 구출했어요!');
 }
