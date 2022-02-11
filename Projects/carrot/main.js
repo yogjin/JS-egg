@@ -86,20 +86,24 @@ function getRandomPosition(carrotOrBug) {
 function handleClicked(e) {
   const clicked = e.target;
   const id = clicked.dataset.id;
-  if (id === 'carrot') {
-    setRemainingCarrot(--numOfCarrots);
-    new Audio('./sound/carrot_pull.mp3').play();
-    clicked.remove();
-    if (numOfCarrots === 0) {
-      showgameResult('당근을 무사히 구출했어요!');
+  if (isPlaying) {
+    if (id === 'carrot') {
+      setRemainingCarrot(--numOfCarrots);
+      new Audio('./sound/carrot_pull.mp3').play();
+      clicked.remove();
+      if (numOfCarrots === 0) {
+        isPlaying = false;
+        showgameResult('당근을 무사히 구출했어요!');
+        BGM.pause();
+        new Audio('./sound/game_win.mp3').play();
+      }
+    } else if (id === 'bug') {
+      isPlaying = false;
       BGM.pause();
-      new Audio('./sound/game_win.mp3').play();
+      new Audio('./sound/bug_pull.mp3').play();
+      clicked.remove();
+      showgameResult('게임 오버...');
     }
-  } else if (id === 'bug') {
-    BGM.pause();
-    new Audio('./sound/bug_pull.mp3').play();
-    clicked.remove();
-    showgameResult('게임 오버...');
   } else if (id === 'redo') {
     gameStart();
   }
