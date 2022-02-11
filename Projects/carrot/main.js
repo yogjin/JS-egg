@@ -9,17 +9,17 @@ const groundY = playGround.getBoundingClientRect().y;
 
 let countInterval;
 let numOfCarrots;
+let isPlaying = false;
 let BGM;
 
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
-  const on = playButton.classList.contains('on');
-  if (!on) {
+  if (!isPlaying) {
+    isPlaying = true;
     BGM = new Audio('./sound/bg.mp3');
     BGM.play();
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
     playButton.innerHTML = `<i class="fas fa-square"></i>`;
-    playButton.classList.add('on');
     let sec = 10;
     countDown.innerText = `00:${sec}`;
     countInterval = setInterval(() => {
@@ -28,16 +28,15 @@ function handleCountDown() {
         console.log('끝!!');
         clearInterval(countInterval);
         playButton.innerHTML = `<i class="fas fa-play"></i>`;
-        playButton.classList.remove('on');
       }
     }, 1000);
   } else {
     // 게임 진행중일때 버튼 다시누르면 카운트다운, 아이콘 초기화
+    isPlaying = false;
     clearInterval(countInterval);
     let sec = 10;
     countDown.innerText = `00:${sec}`;
     playButton.innerHTML = `<i class="fas fa-play"></i>`;
-    playButton.classList.remove('on');
     BGM.pause();
   }
 }
