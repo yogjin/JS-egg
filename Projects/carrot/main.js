@@ -25,8 +25,7 @@ function handleCountDown() {
     countInterval = setInterval(() => {
       countDown.innerText = `00:0${--sec}`;
       if (sec === 0) {
-        console.log('끝!!');
-        clearInterval(countInterval);
+        gameOver();
         playButton.innerHTML = `<i class="fas fa-play"></i>`;
       }
     }, 1000);
@@ -98,11 +97,9 @@ function handleClicked(e) {
         new Audio('./sound/game_win.mp3').play();
       }
     } else if (id === 'bug') {
-      isPlaying = false;
-      BGM.pause();
       new Audio('./sound/bug_pull.mp3').play();
       clicked.remove();
-      showgameResult('게임 오버...');
+      gameOver();
     }
   } else if (id === 'redo') {
     gameStart();
@@ -135,4 +132,12 @@ function gameStart() {
   setRemainingCarrot(10);
   addCarrotAndBugs();
   setCarrotAndBugs();
+}
+
+// 게임 오버
+function gameOver() {
+  isPlaying = false;
+  BGM.pause();
+  clearInterval(countInterval);
+  showgameResult('게임 오버...');
 }
