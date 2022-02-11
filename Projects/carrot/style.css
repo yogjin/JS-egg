@@ -88,6 +88,11 @@ body {
 .button_redo {
   background-color: transparent;
   border: none;
+  transition: transform 500ms;
+  cursor: pointer;
+}
+.button_redo:hover {
+  transform: scale(1.1) rotate(1turn);
 }
 .fa-redo {
   font-size: 50px;
