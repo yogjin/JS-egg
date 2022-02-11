@@ -112,6 +112,7 @@ function setRemainingCarrot(numOfCarrot) {
 
 // 게임 결과 창
 function showgameResult(message) {
+  playButton.style.visibility = 'hidden';
   const resultContainer = `
     <div class='result_container'>
       <button class='button_redo'>
@@ -125,6 +126,7 @@ function showgameResult(message) {
 
 // 게임 시작
 function gameStart() {
+  playButton.style.visibility = 'visible';
   handleCountDown();
   setRemainingCarrot(10);
   addCarrotAndBugs();
