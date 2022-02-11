@@ -9,11 +9,14 @@ const groundY = playGround.getBoundingClientRect().y;
 
 let countInterval;
 let numOfCarrots;
+let BGM;
 
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
   const on = playButton.classList.contains('on');
   if (!on) {
+    BGM = new Audio('./sound/bg.mp3');
+    BGM.play();
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
     playButton.innerHTML = `<i class="fas fa-square"></i>`;
     playButton.classList.add('on');
@@ -35,6 +38,7 @@ function handleCountDown() {
     countDown.innerText = `00:${sec}`;
     playButton.innerHTML = `<i class="fas fa-play"></i>`;
     playButton.classList.remove('on');
+    BGM.pause();
   }
 }
 playButton.addEventListener('click', handleCountDown);
@@ -86,14 +90,18 @@ function getRandomPosition(carrotOrBug) {
 function handleClicked(e) {
   const clicked = e.target;
   const id = clicked.dataset.id;
-  console.log(clicked);
   if (id === 'carrot') {
     setRemainingCarrot(--numOfCarrots);
+    new Audio('./sound/carrot_pull.mp3').play();
     clicked.remove();
     if (numOfCarrots === 0) {
       showgameResult('당근을 무사히 구출했어요!');
+      BGM.pause();
+      new Audio('./sound/game_win.mp3').play();
     }
   } else if (id === 'bug') {
+    BGM.pause();
+    new Audio('./sound/bug_pull.mp3').play();
     clicked.remove();
     showgameResult('게임 오버...');
   } else if (id === 'redo') {
