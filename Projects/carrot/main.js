@@ -2,7 +2,6 @@ const playButton = document.querySelector('.play_button');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
-const 
 const groundWidth = playGround.getBoundingClientRect().width;
 const groundHeight = playGround.getBoundingClientRect().height;
 const groundX = playGround.getBoundingClientRect().x;
@@ -87,6 +86,7 @@ function getRandomPosition(carrotOrBug) {
 function handleClicked(e) {
   const clicked = e.target;
   const id = clicked.dataset.id;
+  console.log(clicked);
   if (id === 'carrot') {
     setRemainingCarrot(--numOfCarrots);
     clicked.remove();
@@ -96,6 +96,11 @@ function handleClicked(e) {
   } else if (id === 'bug') {
     clicked.remove();
     showgameResult('게임 오버...');
+  } else if (id === 'redo') {
+    handleCountDown();
+    setRemainingCarrot(10);
+    addCarrotAndBugs();
+    setCarrotAndBugs();
   }
 }
 playGround.addEventListener('click', handleClicked);
@@ -111,7 +116,7 @@ function showgameResult(message) {
   const resultContainer = `
     <div class='result_container'>
       <button class='button_redo'>
-        <i class="fas fa-redo"></i>
+        <i class="fas fa-redo" data-id='redo'></i>
       </button>
       <span class='result_message'>${message}</span>
     </div>`;
