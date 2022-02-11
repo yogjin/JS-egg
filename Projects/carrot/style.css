@@ -81,7 +81,8 @@ body {
   border-radius: 20px;
   background-color: aliceblue;
   top: 50%;
-  left: 40%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* 게임 결과 창: 다시시작 버튼 */
