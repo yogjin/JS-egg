@@ -79,7 +79,7 @@ body {
   padding: 40px 100px;
   border: 1px solid;
   border-radius: 20px;
-  background-color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.5);
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
@@ -87,19 +87,23 @@ body {
 
 /* 게임 결과 창: 다시시작 버튼 */
 .button_redo {
-  background-color: transparent;
+  background-color: wheat;
   border: none;
+  border-radius: 10px;
   transition: transform 500ms;
   cursor: pointer;
-}
-.button_redo:hover {
-  transform: scale(1.1) rotate(1turn);
+  padding: 10px;
 }
 .fa-redo {
+  transition: transform 500ms;
   font-size: 50px;
+}
+.fa-redo:hover {
+  transform: scale(1.1) rotate(1turn);
 }
 /* 게임 결과 창: 결과 메시지 */
 .result_message {
   padding-top: 10px;
   font-size: 30px;
+  color: white;
 }
