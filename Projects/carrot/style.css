@@ -45,6 +45,10 @@ body {
 
 /* play-ground 게임 공간 */
 .play_ground_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .play_ground {
   width: 100%;
