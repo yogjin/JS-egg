@@ -22,6 +22,22 @@ const winSound = new Audio('./sound/game_win.mp3');
 const alertSound = new Audio('./sound/alert.wav');
 const carrotSize = 80;
 
+// 카운트 다운 시간 설정, 시작
+function startCountDown(sec) {
+  countDown.innerText = `00:${sec}`;
+  countInterval = setInterval(() => {
+    countDown.innerText = `00:0${--sec}`;
+    if (sec === 0) {
+      gameOver();
+      playButton.innerHTML = `<i class="fas fa-play"></i>`;
+    }
+  }, 1000);
+}
+
+// 카운트 다운 시간 설정
+function setCountDownTime(sec) {
+  countDown.innerText = `00:${sec}`;
+}
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
   if (!isPlaying) {
@@ -29,21 +45,12 @@ function handleCountDown() {
     playSound(bgSound);
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
     playButton.innerHTML = `<i class="fas fa-square"></i>`;
-    let sec = 10;
-    countDown.innerText = `00:${sec}`;
-    countInterval = setInterval(() => {
-      countDown.innerText = `00:0${--sec}`;
-      if (sec === 0) {
-        gameOver();
-        playButton.innerHTML = `<i class="fas fa-play"></i>`;
-      }
-    }, 1000);
+    startCountDown(10);
   } else {
     // 게임 진행중일때 버튼 다시누르면 카운트다운, 아이콘 초기화
     isPlaying = false;
     clearInterval(countInterval);
-    let sec = 10;
-    countDown.innerText = `00:${sec}`;
+    setCountDownTime(10);
     playButton.innerHTML = `<i class="fas fa-play"></i>`;
     stopSound(bgSound);
   }
