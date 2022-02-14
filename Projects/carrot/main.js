@@ -10,14 +10,17 @@ const groundY = playGround.getBoundingClientRect().y;
 let countInterval;
 let numOfCarrots;
 let isPlaying = false;
-let BGM;
+const bgSound = new Audio('./sound/bg.mp3');
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+const alertSound = new Audio('./sound/alert.wav');
 
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
   if (!isPlaying) {
     isPlaying = true;
-    BGM = new Audio('./sound/bg.mp3');
-    BGM.play();
+    playSound(bgSound);
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
     playButton.innerHTML = `<i class="fas fa-square"></i>`;
     let sec = 10;
@@ -36,7 +39,7 @@ function handleCountDown() {
     let sec = 10;
     countDown.innerText = `00:${sec}`;
     playButton.innerHTML = `<i class="fas fa-play"></i>`;
-    BGM.pause();
+    stopSound(bgSound);
   }
 }
 playButton.addEventListener('click', gameStart);
@@ -76,6 +79,7 @@ function setCarrotAndBugs() {
 function getRandomPosition(carrotOrBug) {
   const carrotOrBugWidth = carrotOrBug.getBoundingClientRect().width;
   const carrotOrBugHeight = carrotOrBug.getBoundingClientRect().height;
+  console.log(carrotOrBugHeight);
   const x = groundX + (groundWidth - carrotOrBugWidth) * Math.random();
   const y = groundY + (groundHeight - carrotOrBugHeight) * Math.random();
   return { x, y };
@@ -91,13 +95,13 @@ function handleClicked(e) {
   if (isPlaying) {
     if (id === 'carrot') {
       setRemainingCarrot(--numOfCarrots);
-      new Audio('./sound/carrot_pull.mp3').play();
+      playSound(carrotSound);
       clicked.remove();
       if (numOfCarrots === 0) {
         gameClear();
       }
     } else if (id === 'bug') {
-      new Audio('./sound/bug_pull.mp3').play();
+      playSound(bugSound);
       clicked.remove();
       gameOver();
     }
@@ -139,17 +143,27 @@ function gameStart() {
 // 게임 오버
 function gameOver() {
   isPlaying = false;
-  BGM.pause();
+  stopSound(bgSound);
   clearInterval(countInterval);
-  new Audio('./sound/alert.wav').play();
+  playSound(alertSound);
   showgameResult('게임 오버...');
 }
 
 // 게임 클리어
 function gameClear() {
   isPlaying = false;
-  BGM.pause();
+  stopSound(bgSound);
   clearInterval(countInterval);
-  new Audio('./sound/game_win.mp3').play();
+  playSound(winSound);
   showgameResult('당근을 무사히 구출했어요!');
+}
+
+// 게임 사운드 재생
+function playSound(sound) {
+  sound.pause();
+  sound.play();
+}
+
+function stopSound(sound) {
+  sound.pause();
 }
