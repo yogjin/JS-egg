@@ -22,6 +22,11 @@ const winSound = new Audio('./sound/game_win.mp3');
 const alertSound = new Audio('./sound/alert.wav');
 const carrotSize = 80;
 
+// EventListener
+playButton.addEventListener('click', gameStart);
+redoButton.addEventListener('click', gameStart);
+playGround.addEventListener('click', handleClicked);
+
 // 카운트 다운 시간 설정, 시작
 function startCountDown(sec) {
   countDown.innerText = `00:${sec}`;
@@ -55,7 +60,6 @@ function handleCountDown() {
     stopSound(bgSound);
   }
 }
-playButton.addEventListener('click', gameStart);
 
 // 벌레, 당근 추가
 function addCarrotAndBugs() {
@@ -119,8 +123,6 @@ function handleClicked(e) {
     }
   }
 }
-redoButton.addEventListener('click', gameStart);
-playGround.addEventListener('click', handleClicked);
 
 // 남은 당근 개수를 10개로 설정
 function setRemainingCarrot(numOfCarrot) {
