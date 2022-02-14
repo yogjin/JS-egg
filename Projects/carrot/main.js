@@ -2,8 +2,12 @@ const playButton = document.querySelector('.play_button');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
-const groundWidth = playGround.getBoundingClientRect().width;
-const groundHeight = playGround.getBoundingClientRect().height;
+let groundWidth;
+let groundHeight;
+window.addEventListener('load', () => {
+  groundWidth = playGround.getBoundingClientRect().width;
+  groundHeight = playGround.getBoundingClientRect().height;
+});
 
 let countInterval;
 let numOfCarrots;
