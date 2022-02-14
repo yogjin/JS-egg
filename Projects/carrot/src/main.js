@@ -141,6 +141,7 @@ function gameStart() {
 
 // 게임 오버
 function gameOver() {
+  playButton.style.visibility = 'hidden';
   isPlaying = false;
   stopSound(bgSound);
   clearInterval(countInterval);
@@ -150,6 +151,7 @@ function gameOver() {
 
 // 게임 클리어
 function gameClear() {
+  playButton.style.visibility = 'hidden';
   isPlaying = false;
   stopSound(bgSound);
   clearInterval(countInterval);

@@ -7,13 +7,11 @@ export default class Result {
       this.onClick && this.onClick();
       this.hide();
     });
-    this.playButton = document.querySelector('.play_button');
   }
   setClickListener(onClick) {
     this.onClick = onClick;
   }
   showWithMessage(message) {
-    this.playButton.style.visibility = 'hidden';
     this.resultMessage.innerText = message;
     this.resultContainer.style.display = 'flex';
   }
