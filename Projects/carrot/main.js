@@ -167,7 +167,7 @@ function gameClear() {
 
 // 게임 사운드 재생
 function playSound(sound) {
-  sound.pause();
+  sound.currentTime = 0;
   sound.play();
 }
 
