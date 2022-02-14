@@ -2,6 +2,7 @@ const playButton = document.querySelector('.play_button');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
+const resultMessage = document.querySelector('.result_message');
 let groundWidth;
 let groundHeight;
 window.addEventListener('load', () => {
@@ -122,14 +123,7 @@ function setRemainingCarrot(numOfCarrot) {
 // 게임 결과 창
 function showgameResult(message) {
   playButton.style.visibility = 'hidden';
-  const resultContainer = `
-    <div class='result_container'>
-      <button class='button_redo'>
-        <i class="fas fa-redo" data-id='redo'></i>
-      </button>
-      <span class='result_message'>${message}</span>
-    </div>`;
-  playGround.insertAdjacentHTML('beforeend', resultContainer);
+  resultMessage.innerText = message;
   document.querySelector('.result_container').style.display = 'flex';
 }
 
