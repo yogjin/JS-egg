@@ -4,8 +4,6 @@ const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
 const groundWidth = playGround.getBoundingClientRect().width;
 const groundHeight = playGround.getBoundingClientRect().height;
-const groundX = playGround.getBoundingClientRect().x;
-const groundY = playGround.getBoundingClientRect().y;
 
 let countInterval;
 let numOfCarrots;
@@ -15,6 +13,7 @@ const carrotSound = new Audio('./sound/carrot_pull.mp3');
 const bugSound = new Audio('./sound/bug_pull.mp3');
 const winSound = new Audio('./sound/game_win.mp3');
 const alertSound = new Audio('./sound/alert.wav');
+const carrotSize = 80;
 
 // 게임 시작하면 카운트 다운
 function handleCountDown() {
@@ -69,19 +68,18 @@ function setCarrotAndBugs() {
   const carrotAndBugs = document.querySelectorAll('.item');
   carrotAndBugs.forEach((carrotOrBug) => {
     carrotOrBug.style.display = 'inline-block';
-    const { x, y } = getRandomPosition(carrotOrBug);
+    const { x, y } = getRandomPosition();
     carrotOrBug.style.left = `${x}px`;
     carrotOrBug.style.top = `${y}px`;
   });
 }
 
 // 벌레,당근을 playGround안 랜덤한 위치에 위치시키기 위함
-function getRandomPosition(carrotOrBug) {
-  const carrotOrBugWidth = carrotOrBug.getBoundingClientRect().width;
-  const carrotOrBugHeight = carrotOrBug.getBoundingClientRect().height;
-  console.log(carrotOrBugHeight);
-  const x = groundX + (groundWidth - carrotOrBugWidth) * Math.random();
-  const y = groundY + (groundHeight - carrotOrBugHeight) * Math.random();
+function getRandomPosition() {
+  const rangeX = groundWidth - carrotSize;
+  const rangeY = groundHeight - carrotSize;
+  const x = rangeX * Math.random();
+  const y = rangeY * Math.random();
   return { x, y };
 }
 

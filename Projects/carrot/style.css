@@ -53,6 +53,7 @@ body {
   justify-content: flex-end;
 }
 .play_ground {
+  position: relative;
   width: 100%;
   height: 70%;
 }
