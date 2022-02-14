@@ -1,8 +1,10 @@
 const playButton = document.querySelector('.play_button');
+const redoButton = document.querySelector('.button_redo');
 const countDown = document.querySelector('.count_down');
 const playGround = document.querySelector('.play_ground');
 const remainingCarrot = document.querySelector('.remaining_carrot');
 const resultMessage = document.querySelector('.result_message');
+const resultContainer = document.querySelector('.result_container');
 let groundWidth;
 let groundHeight;
 window.addEventListener('load', () => {
@@ -108,10 +110,9 @@ function handleClicked(e) {
       clicked.remove();
       gameOver();
     }
-  } else if (id === 'redo') {
-    gameStart();
   }
 }
+redoButton.addEventListener('click', gameStart);
 playGround.addEventListener('click', handleClicked);
 
 // 남은 당근 개수를 10개로 설정
@@ -124,11 +125,12 @@ function setRemainingCarrot(numOfCarrot) {
 function showgameResult(message) {
   playButton.style.visibility = 'hidden';
   resultMessage.innerText = message;
-  document.querySelector('.result_container').style.display = 'flex';
+  resultContainer.style.display = 'flex';
 }
 
 // 게임 시작
 function gameStart() {
+  resultContainer.style.display = 'none';
   playButton.style.visibility = 'visible';
   handleCountDown();
   setRemainingCarrot(10);
