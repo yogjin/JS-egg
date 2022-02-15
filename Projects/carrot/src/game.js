@@ -3,7 +3,7 @@ import * as sound from './sound.js';
 import Result from './result.js';
 
 export default class Game {
-  constructor() {
+  constructor(numOfCarrots) {
     this.playButton = document.querySelector('.play_button');
     this.countDown = document.querySelector('.count_down');
     this.remainingCarrot = document.querySelector('.remaining_carrot');
@@ -16,7 +16,7 @@ export default class Game {
     this.gameFinishBanner.setClickListener(() => this.gameStart());
 
     this.countInterval;
-    this.numOfCarrots;
+    this.setRemainingCarrot(numOfCarrots);
     this.isPlaying = false;
   }
 
@@ -24,7 +24,6 @@ export default class Game {
   gameStart() {
     this.playButton.style.visibility = 'visible';
     this.handleCountDown();
-    this.setRemainingCarrot(10);
     this.playGround.setCarrotAndBugs();
   }
 
