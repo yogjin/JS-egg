@@ -8,15 +8,13 @@ let countInterval;
 let numOfCarrots;
 let isPlaying = false;
 const bgSound = new Audio('./sound/bg.mp3');
-const carrotSound = new Audio('./sound/carrot_pull.mp3');
-const bugSound = new Audio('./sound/bug_pull.mp3');
 const winSound = new Audio('./sound/game_win.mp3');
 const alertSound = new Audio('./sound/alert.wav');
 
 const gameFinishBanner = new Result();
 gameFinishBanner.setClickListener(gameStart);
 const playGround = new PlayGround();
-playGround.setClickListener(handleClicked);
+playGround.setClickListener(onItemClick);
 
 // EventListener
 playButton.addEventListener('click', gameStart);
@@ -55,26 +53,18 @@ function handleCountDown() {
   }
 }
 
-// play_ground를 클릭했을 때 상호작용
-// 당근: .remaining_carrot값 감소
-// 벌레: 게임 오버
-// button_redo: 게임 다시시작
-function handleClicked(e) {
-  const clicked = e.target;
-  const id = clicked.dataset.id;
-  if (isPlaying) {
-    if (id === 'carrot') {
-      setRemainingCarrot(--numOfCarrots);
-      playSound(carrotSound);
-      clicked.remove();
-      if (numOfCarrots === 0) {
-        gameClear();
-      }
-    } else if (id === 'bug') {
-      playSound(bugSound);
-      clicked.remove();
-      gameOver();
+// item를 클릭했을 때 로직
+function onItemClick(item) {
+  if (!isPlaying) {
+    return;
+  }
+  if (item === 'carrot') {
+    setRemainingCarrot(--numOfCarrots);
+    if (numOfCarrots === 0) {
+      gameClear();
     }
+  } else if (item === 'bug') {
+    gameOver();
   }
 }
 

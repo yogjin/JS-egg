@@ -1,3 +1,6 @@
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+
 export default class PlayGround {
   constructor() {
     this.playGround = document.querySelector('.play_ground');
@@ -6,13 +9,27 @@ export default class PlayGround {
       this.groundWidth = this.playGround.getBoundingClientRect().width;
       this.groundHeight = this.playGround.getBoundingClientRect().height;
     });
-    this.playGround.addEventListener('click', (e) => {
-      this.onClick && this.onClick(e);
-    });
+    this.playGround.addEventListener('click', (e) => this.onClick(e));
   }
+
   // 벌레, 당근 클릭시 이벤트 설정
-  setClickListener(onClick) {
-    this.onClick = onClick;
+  setClickListener(onItemClick) {
+    this.onItemClick = onItemClick;
+  }
+
+  // item을 클릭했을때 로직
+  onClick(e) {
+    const clicked = e.target;
+    const id = clicked.dataset.id;
+    if (id === 'carrot') {
+      playSound(carrotSound);
+      clicked.remove();
+      this.onItemClick && this.onItemClick('carrot');
+    } else if (id === 'bug') {
+      playSound(bugSound);
+      clicked.remove();
+      this.onItemClick && this.onItemClick('bug');
+    }
   }
 
   // 벌레,당근을 playGround안 랜덤한 위치에 위치시키기 위함
@@ -52,4 +69,10 @@ export default class PlayGround {
   clear() {
     this.playGround.innerHTML = '';
   }
+}
+
+// 게임 사운드 재생
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
 }
