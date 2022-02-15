@@ -14,20 +14,6 @@ export default class PlayGround {
   setClickListener(onClick) {
     this.onClick = onClick;
   }
-  // 벌레, 당근 추가
-  addCarrotAndBugs() {
-    const carrot = `
-    <div class='item carrot'>
-      <img src='./img/carrot.png' data-id='carrot'>
-    </div>
-  `;
-    const bug = `
-    <div class='item bug'>
-      <img src='./img/bug.png' data-id='bug'>
-    </div>
-  `;
-    this.playGround.innerHTML = `${carrot.repeat(10)}${bug.repeat(10)}`;
-  }
 
   // 벌레,당근을 playGround안 랜덤한 위치에 위치시키기 위함
   getRandomPosition() {
@@ -39,6 +25,18 @@ export default class PlayGround {
   }
   // 벌레, 당근을 랜덤위치 시킴
   setCarrotAndBugs() {
+    const carrot = `
+    <div class='item carrot'>
+      <img src='./img/carrot.png' data-id='carrot'>
+    </div>
+  `;
+    const bug = `
+    <div class='item bug'>
+      <img src='./img/bug.png' data-id='bug'>
+    </div>
+  `;
+    this.playGround.innerHTML = `${carrot.repeat(10)}${bug.repeat(10)}`;
+
     const carrotAndBugs = document.querySelectorAll('.item');
     carrotAndBugs.forEach((carrotOrBug) => {
       carrotOrBug.style.display = 'inline-block';
@@ -50,7 +48,6 @@ export default class PlayGround {
 
   // 벌레, 당근 삭제
   // fa-square로 중간에 게임 중단하면 수행
-  // addCarrotAndBugs,setCarrotAndBugs 수정요망 -> 하나로 묶으면 될듯
   // main.js에서 playButton click eventListener 수정요망 -> 중단하는 경우 gameStart는 의미에 맞지않음
   clear() {
     this.playGround.innerHTML = '';

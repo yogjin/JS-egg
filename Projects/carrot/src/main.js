@@ -89,7 +89,6 @@ function gameStart() {
   playButton.style.visibility = 'visible';
   handleCountDown();
   setRemainingCarrot(10);
-  playGround.addCarrotAndBugs();
   playGround.setCarrotAndBugs();
 }
 
