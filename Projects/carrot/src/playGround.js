@@ -1,6 +1,8 @@
 import * as sound from './sound.js';
 export default class PlayGround {
-  constructor() {
+  constructor(carrotCount, bugCount) {
+    this.carrotCount = carrotCount;
+    this.bugCount = bugCount;
     this.playGround = document.querySelector('.play_ground');
     this.carrotSize = 80;
     window.addEventListener('load', () => {
@@ -50,7 +52,9 @@ export default class PlayGround {
       <img src='./img/bug.png' data-id='bug'>
     </div>
   `;
-    this.playGround.innerHTML = `${carrot.repeat(10)}${bug.repeat(10)}`;
+    this.playGround.innerHTML = `${carrot.repeat(this.carrotCount)}${bug.repeat(
+      this.bugCount
+    )}`;
 
     const carrotAndBugs = document.querySelectorAll('.item');
     carrotAndBugs.forEach((carrotOrBug) => {

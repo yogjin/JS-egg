@@ -3,20 +3,24 @@ import * as sound from './sound.js';
 import Result from './result.js';
 
 export default class Game {
-  constructor(numOfCarrots) {
+  constructor(gameDuration, carrotCount, bugCount) {
     this.playButton = document.querySelector('.play_button');
     this.countDown = document.querySelector('.count_down');
     this.remainingCarrot = document.querySelector('.remaining_carrot');
 
+    this.gameDuration = gameDuration;
+    this.setRemainingCarrot(carrotCount);
+    this.carrotCount = carrotCount;
+    this.bugCount = bugCount;
+
     this.playButton.addEventListener('click', () => this.gameStart());
 
-    this.playGround = new PlayGround();
+    this.playGround = new PlayGround(carrotCount, bugCount);
     this.playGround.setClickListener((item) => this.onItemClick(item));
     this.gameFinishBanner = new Result();
     this.gameFinishBanner.setClickListener(() => this.gameStart());
 
     this.countInterval;
-    this.setRemainingCarrot(numOfCarrots);
     this.isPlaying = false;
   }
 
@@ -34,12 +38,12 @@ export default class Game {
       sound.playBackGround();
       // 게임 시작 시 카운트다운 시작, 아이콘 변화
       this.playButton.innerHTML = `<i class="fas fa-square"></i>`;
-      this.startCountDown(10);
+      this.startCountDown(this.gameDuration);
     } else {
       // 게임 진행중일때 버튼 다시누르면 카운트다운, 아이콘 초기화
       this.isPlaying = false;
       clearInterval(this.countInterval);
-      this.setCountDownTime(10);
+      this.setCountDownTime(this.gameDuration);
       this.playButton.innerHTML = `<i class="fas fa-play"></i>`;
       sound.stopBackGround();
     }
@@ -62,9 +66,9 @@ export default class Game {
   }
 
   // 남은 당근 개수를 설정
-  setRemainingCarrot(numOfCarrot) {
-    this.numOfCarrots = numOfCarrot;
-    this.remainingCarrot.innerText = this.numOfCarrots;
+  setRemainingCarrot(carrotCount) {
+    this.carrotCount = carrotCount;
+    this.remainingCarrot.innerText = this.carrotCount;
   }
 
   // item를 클릭했을 때 로직
@@ -73,8 +77,8 @@ export default class Game {
       return;
     }
     if (item === 'carrot') {
-      this.setRemainingCarrot(--this.numOfCarrots);
-      if (this.numOfCarrots === 0) {
+      this.setRemainingCarrot(--this.carrotCount);
+      if (this.carrotCount === 0) {
         this.gameClear();
       }
     } else if (item === 'bug') {
