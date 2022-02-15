@@ -1,6 +1,4 @@
-const carrotSound = new Audio('./sound/carrot_pull.mp3');
-const bugSound = new Audio('./sound/bug_pull.mp3');
-
+import * as sound from './sound.js';
 export default class PlayGround {
   constructor() {
     this.playGround = document.querySelector('.play_ground');
@@ -22,11 +20,11 @@ export default class PlayGround {
     const clicked = e.target;
     const id = clicked.dataset.id;
     if (id === 'carrot') {
-      playSound(carrotSound);
+      sound.playCarrot();
       clicked.remove();
       this.onItemClick && this.onItemClick('carrot');
     } else if (id === 'bug') {
-      playSound(bugSound);
+      sound.playBug();
       clicked.remove();
       this.onItemClick && this.onItemClick('bug');
     }
@@ -69,10 +67,4 @@ export default class PlayGround {
   clear() {
     this.playGround.innerHTML = '';
   }
-}
-
-// 게임 사운드 재생
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
 }

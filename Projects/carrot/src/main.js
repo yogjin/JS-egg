@@ -1,3 +1,4 @@
+import * as sound from './sound.js';
 import Result from './result.js';
 import PlayGround from './playGround.js';
 const playButton = document.querySelector('.play_button');
@@ -7,9 +8,6 @@ const remainingCarrot = document.querySelector('.remaining_carrot');
 let countInterval;
 let numOfCarrots;
 let isPlaying = false;
-const bgSound = new Audio('./sound/bg.mp3');
-const winSound = new Audio('./sound/game_win.mp3');
-const alertSound = new Audio('./sound/alert.wav');
 
 const gameFinishBanner = new Result();
 gameFinishBanner.setClickListener(gameStart);
@@ -39,7 +37,7 @@ function setCountDownTime(sec) {
 function handleCountDown() {
   if (!isPlaying) {
     isPlaying = true;
-    playSound(bgSound);
+    sound.playBackGround();
     // 게임 시작 시 카운트다운 시작, 아이콘 변화
     playButton.innerHTML = `<i class="fas fa-square"></i>`;
     startCountDown(10);
@@ -49,7 +47,7 @@ function handleCountDown() {
     clearInterval(countInterval);
     setCountDownTime(10);
     playButton.innerHTML = `<i class="fas fa-play"></i>`;
-    stopSound(bgSound);
+    sound.stopBackGround();
   }
 }
 
@@ -86,9 +84,9 @@ function gameStart() {
 function gameOver() {
   playButton.style.visibility = 'hidden';
   isPlaying = false;
-  stopSound(bgSound);
+  sound.stopBackGround();
   clearInterval(countInterval);
-  playSound(alertSound);
+  sound.playGameOver();
   gameFinishBanner.showWithMessage('게임 오버...');
 }
 
@@ -96,18 +94,8 @@ function gameOver() {
 function gameClear() {
   playButton.style.visibility = 'hidden';
   isPlaying = false;
-  stopSound(bgSound);
+  sound.stopBackGround();
   clearInterval(countInterval);
-  playSound(winSound);
+  sound.playWin();
   gameFinishBanner.showWithMessage('당근을 무사히 구출했어요!');
-}
-
-// 게임 사운드 재생
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
-}
-
-function stopSound(sound) {
-  sound.pause();
 }
