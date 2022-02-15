@@ -27,6 +27,7 @@ export default class Game {
 
   // 게임 시작
   gameStart() {
+    this.score = 0;
     this.playButton.style.visibility = 'visible';
     this.handleCountDown();
     this.setRemainingCarrot();
@@ -48,7 +49,6 @@ export default class Game {
       this.setCountDownTime(this.gameDuration);
       this.playButton.innerHTML = `<i class="fas fa-play"></i>`;
       sound.stopBackGround();
-      this.score = 0;
     }
   }
   // 카운트 다운 시간 설정, 시작
@@ -97,7 +97,6 @@ export default class Game {
     clearInterval(this.countInterval);
     sound.playWin();
     this.gameFinishBanner.showWithMessage('당근을 무사히 구출했어요!');
-    this.score = 0;
   }
 
   // 게임 오버
@@ -108,6 +107,5 @@ export default class Game {
     clearInterval(this.countInterval);
     sound.playGameOver();
     this.gameFinishBanner.showWithMessage('게임 오버...');
-    this.score = 0;
   }
 }
