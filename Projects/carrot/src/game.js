@@ -9,8 +9,9 @@ export default class Game {
     this.remainingCarrot = document.querySelector('.remaining_carrot');
 
     this.gameDuration = gameDuration;
-    this.setRemainingCarrot(carrotCount);
+    this.score = 0;
     this.carrotCount = carrotCount;
+    this.setRemainingCarrot();
     this.bugCount = bugCount;
 
     this.playButton.addEventListener('click', () => this.gameStart());
@@ -28,6 +29,7 @@ export default class Game {
   gameStart() {
     this.playButton.style.visibility = 'visible';
     this.handleCountDown();
+    this.setRemainingCarrot();
     this.playGround.setCarrotAndBugs();
   }
 
@@ -46,6 +48,7 @@ export default class Game {
       this.setCountDownTime(this.gameDuration);
       this.playButton.innerHTML = `<i class="fas fa-play"></i>`;
       sound.stopBackGround();
+      this.score = 0;
     }
   }
   // 카운트 다운 시간 설정, 시작
@@ -66,9 +69,8 @@ export default class Game {
   }
 
   // 남은 당근 개수를 설정
-  setRemainingCarrot(carrotCount) {
-    this.carrotCount = carrotCount;
-    this.remainingCarrot.innerText = this.carrotCount;
+  setRemainingCarrot() {
+    this.remainingCarrot.innerText = this.carrotCount - this.score;
   }
 
   // item를 클릭했을 때 로직
@@ -77,8 +79,9 @@ export default class Game {
       return;
     }
     if (item === 'carrot') {
-      this.setRemainingCarrot(--this.carrotCount);
-      if (this.carrotCount === 0) {
+      this.score++;
+      this.setRemainingCarrot();
+      if (this.score === this.carrotCount) {
         this.gameClear();
       }
     } else if (item === 'bug') {
@@ -94,6 +97,7 @@ export default class Game {
     clearInterval(this.countInterval);
     sound.playWin();
     this.gameFinishBanner.showWithMessage('당근을 무사히 구출했어요!');
+    this.score = 0;
   }
 
   // 게임 오버
@@ -104,5 +108,6 @@ export default class Game {
     clearInterval(this.countInterval);
     sound.playGameOver();
     this.gameFinishBanner.showWithMessage('게임 오버...');
+    this.score = 0;
   }
 }
