@@ -39,9 +39,6 @@ export default class PlayGround {
   }
   // 벌레, 당근을 랜덤위치 시킴
   setCarrotAndBugs() {
-    if (!isPlaying) {
-      return;
-    }
     const carrotAndBugs = document.querySelectorAll('.item');
     carrotAndBugs.forEach((carrotOrBug) => {
       carrotOrBug.style.display = 'inline-block';
@@ -49,5 +46,13 @@ export default class PlayGround {
       carrotOrBug.style.left = `${x}px`;
       carrotOrBug.style.top = `${y}px`;
     });
+  }
+
+  // 벌레, 당근 삭제
+  // fa-square로 중간에 게임 중단하면 수행
+  // addCarrotAndBugs,setCarrotAndBugs 수정요망 -> 하나로 묶으면 될듯
+  // main.js에서 playButton click eventListener 수정요망 -> 중단하는 경우 gameStart는 의미에 맞지않음
+  clear() {
+    this.playGround.innerHTML = '';
   }
 }
