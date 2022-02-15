@@ -1,6 +1,5 @@
 import PlayGround from './playGround.js';
 import * as sound from './sound.js';
-import Result from './result.js';
 
 export default class Game {
   constructor(gameDuration, carrotCount, bugCount) {
@@ -18,8 +17,6 @@ export default class Game {
 
     this.playGround = new PlayGround(carrotCount, bugCount);
     this.playGround.setClickListener((item) => this.onItemClick(item));
-    this.gameFinishBanner = new Result();
-    this.gameFinishBanner.setClickListener(() => this.gameStart());
 
     this.countInterval;
     this.isPlaying = false;
@@ -89,6 +86,10 @@ export default class Game {
     }
   }
 
+  // 게임 끝났을때 banner 출력 상태 전달
+  setFinishListener(onGameFinish) {
+    this.onGameFinish = onGameFinish;
+  }
   // 게임 클리어
   gameClear() {
     this.playButton.style.visibility = 'hidden';
@@ -96,7 +97,7 @@ export default class Game {
     sound.stopBackGround();
     clearInterval(this.countInterval);
     sound.playWin();
-    this.gameFinishBanner.showWithMessage('당근을 무사히 구출했어요!');
+    this.onGameFinish && this.onGameFinish('win');
   }
 
   // 게임 오버
@@ -106,6 +107,6 @@ export default class Game {
     sound.stopBackGround();
     clearInterval(this.countInterval);
     sound.playGameOver();
-    this.gameFinishBanner.showWithMessage('게임 오버...');
+    this.onGameFinish && this.onGameFinish('lose');
   }
 }
