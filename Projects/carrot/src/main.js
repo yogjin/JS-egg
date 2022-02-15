@@ -1,9 +1,6 @@
 import * as sound from './sound.js';
 import Result from './result.js';
 import PlayGround from './playGround.js';
-const playButton = document.querySelector('.play_button');
-const countDown = document.querySelector('.count_down');
-const remainingCarrot = document.querySelector('.remaining_carrot');
 
 let countInterval;
 let numOfCarrots;
