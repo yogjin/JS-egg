@@ -6,7 +6,32 @@ export const Reason = Object.freeze({
   lose: 'lose',
 });
 
-export class Game {
+export class GameBuilder {
+  gameDuration(sec) {
+    this.gameDuration = sec;
+    return this;
+  }
+
+  carrotCount(num) {
+    this.carrotCount = num;
+    return this;
+  }
+
+  bugCount(num) {
+    this.bugCount = num;
+    return this;
+  }
+
+  build() {
+    return new Game(
+      this.gameDuration, //
+      this.carrotCount,
+      this.bugCount
+    );
+  }
+}
+
+class Game {
   constructor(gameDuration, carrotCount, bugCount) {
     this.playButton = document.querySelector('.play_button');
     this.countDown = document.querySelector('.count_down');

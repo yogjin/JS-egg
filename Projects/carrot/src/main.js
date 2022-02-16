@@ -1,7 +1,12 @@
-import { Game, Reason } from './game.js';
+import { GameBuilder, Reason } from './game.js';
 import Result from './result.js';
 
-const game = new Game(10, 2, 2);
+const game = new GameBuilder() //
+  .gameDuration(5)
+  .carrotCount(3)
+  .bugCount(3)
+  .build();
+
 const gameFinishBanner = new Result();
 game.setFinishListener((reason) => {
   let message;
