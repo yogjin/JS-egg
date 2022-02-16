@@ -1,7 +1,12 @@
 import PlayGround from './playGround.js';
 import * as sound from './sound.js';
 
-export default class Game {
+export const Reason = Object.freeze({
+  win: 'win',
+  lose: 'lose',
+});
+
+export class Game {
   constructor(gameDuration, carrotCount, bugCount) {
     this.playButton = document.querySelector('.play_button');
     this.countDown = document.querySelector('.count_down');
@@ -97,7 +102,7 @@ export default class Game {
     sound.stopBackGround();
     clearInterval(this.countInterval);
     sound.playWin();
-    this.onGameFinish && this.onGameFinish('win');
+    this.onGameFinish && this.onGameFinish(Reason.win);
   }
 
   // 게임 오버
@@ -107,6 +112,6 @@ export default class Game {
     sound.stopBackGround();
     clearInterval(this.countInterval);
     sound.playGameOver();
-    this.onGameFinish && this.onGameFinish('lose');
+    this.onGameFinish && this.onGameFinish(Reason.lose);
   }
 }
